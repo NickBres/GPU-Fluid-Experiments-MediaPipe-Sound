@@ -63,6 +63,60 @@ export const PALETTES: readonly Palette[] = [
     dyeFast:           [0.25, 0.65, 0.9],
     decay:             [0.970, 0.980, 0.990],
   },
+  {
+    name:              'sunset',
+    particleSlow:      [0.15, 0.02, 0.08],
+    particleFast:      [1.0,  0.30, 0.0],
+    particleHighlight: [1.0,  0.80, 0.4],
+    dyeSlow:           [0.10, 0.01, 0.05],
+    dyeFast:           [0.70, 0.20, 0.0],
+    decay:             [0.985, 0.960, 0.975],
+  },
+  {
+    name:              'aurora',
+    particleSlow:      [0.0,  0.05, 0.08],
+    particleFast:      [0.0,  0.90, 0.5],
+    particleHighlight: [0.6,  1.0,  0.8],
+    dyeSlow:           [0.0,  0.03, 0.05],
+    dyeFast:           [0.0,  0.60, 0.35],
+    decay:             [0.950, 0.985, 0.970],
+  },
+  {
+    name:              'blood',
+    particleSlow:      [0.12, 0.0,  0.0],
+    particleFast:      [0.90, 0.0,  0.05],
+    particleHighlight: [1.0,  0.40, 0.3],
+    dyeSlow:           [0.08, 0.0,  0.0],
+    dyeFast:           [0.60, 0.0,  0.03],
+    decay:             [0.990, 0.950, 0.950],
+  },
+  {
+    name:              'cosmos',
+    particleSlow:      [0.02, 0.0,  0.08],
+    particleFast:      [0.30, 0.10, 1.0],
+    particleHighlight: [0.90, 0.80, 1.0],
+    dyeSlow:           [0.01, 0.0,  0.05],
+    dyeFast:           [0.20, 0.05, 0.70],
+    decay:             [0.960, 0.950, 0.985],
+  },
+  {
+    name:              'toxic',
+    particleSlow:      [0.05, 0.08, 0.0],
+    particleFast:      [0.70, 1.0,  0.0],
+    particleHighlight: [0.90, 1.0,  0.5],
+    dyeSlow:           [0.03, 0.05, 0.0],
+    dyeFast:           [0.50, 0.80, 0.0],
+    decay:             [0.975, 0.990, 0.940],
+  },
+  {
+    name:              'rose',
+    particleSlow:      [0.15, 0.0,  0.08],
+    particleFast:      [1.0,  0.10, 0.50],
+    particleHighlight: [1.0,  0.70, 0.90],
+    dyeSlow:           [0.10, 0.0,  0.05],
+    dyeFast:           [0.70, 0.05, 0.35],
+    decay:             [0.985, 0.950, 0.975],
+  },
 ];
 
 // ---------------------------------------------------------------------------
@@ -86,7 +140,7 @@ export class PaletteController {
   private _beatCooldown: number       = 0;   // seconds remaining before next auto-switch
 
   autoSwitch      = true;
-  beatSensitivity = 1.5; // energy spike multiple over rolling average to trigger beat
+  beatSensitivity = 1.2; // energy spike multiple over rolling average to trigger beat
   micEnabled      = false;
 
   // Lerped output — read these each frame and upload as uniforms
@@ -191,7 +245,7 @@ export class PaletteController {
     const bass = (this._freqData[0] + this._freqData[1] + this._freqData[2]) / 3 / 255;
 
     this._bassHistory.push(bass);
-    if (this._bassHistory.length > 45) this._bassHistory.shift(); // ~1.5s at 30fps
+    if (this._bassHistory.length > 300) this._bassHistory.shift(); // ~10s at 30fps
 
     if (this._bassHistory.length < 10) return; // warmup
 
