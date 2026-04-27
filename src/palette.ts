@@ -135,7 +135,7 @@ export class PaletteController {
   private readonly _lerpDuration = 0.5; // seconds for palette crossfade
 
   private _analyser:     AnalyserNode | null = null;
-  private _freqData:     Uint8Array   | null = null;
+  private _freqData:     Uint8Array<ArrayBuffer> | null = null;
   private _bassHistory:  number[]     = [];
   private _beatCooldown: number       = 0;   // seconds remaining before next auto-switch
 
