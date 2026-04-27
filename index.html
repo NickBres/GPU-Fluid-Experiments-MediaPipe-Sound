@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GPU Fluid + Hands</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: #000; overflow: hidden; }
+    #canvas { display: block; width: 100vw; height: 100vh; }
+    #video {
+      position: fixed; top: 0; left: 0;
+      width: 1px; height: 1px; opacity: 0;
+      pointer-events: none;
+    }
+    #status {
+      position: fixed; bottom: 12px; left: 12px;
+      color: rgba(255,255,255,0.35); font: 11px/1.5 monospace;
+      pointer-events: none; user-select: none;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="canvas"></canvas>
+  <video id="video" autoplay playsinline muted></video>
+  <div id="status">Initializing…</div>
+  <script type="module" src="/src/main.ts"></script>
+</body>
+</html>

@@ -1,11 +1,44 @@
-# Cross-platform GPU fluid simulation
+# GPU Fluid + MediaPipe + Sound
 
-### [Demo](http://haxiomic.github.io/GPU-Fluid-Experiments/html5/)
+GPU fluid simulation with real-time hand tracking and audio-reactive palettes — runs in the browser, no install needed.
 
-This repo is a little old and dusty and likely doesn't build with the latest tools, If you're looking for a version with working build instructions check out [this fork: BathBombFluidDynamics](https://github.com/ollyc2015/BathBombFluidDynamics) by [Oliver Curtis](https://github.com/ollyc2015) which adds some interesting effects.
+**[Original project by @haxiomic](https://github.com/haxiomic/GPU-Fluid-Experiments)**
 
-I'm currently working on a rewrite so watch this space :)
+---
 
-------
+## What's new in this fork
 
-If you have an idea and you want to collaborate, feel free to get in touch with me [haxiomic@gmail.com](mailto:haxiomic@gmail.com)
+- Full **TypeScript + WebGL2** rewrite (original was Haxe/Lime)
+- **MediaPipe hand tracking** — fingertips drive fluid forces via webcam
+- **Body segmentation** — your silhouette interacts with the fluid
+- **Audio-reactive palettes** — beat detection via mic or system audio
+- **Mouse/touch fallback** when camera is unavailable
+- Built with **Vite**, no toolchain setup needed
+
+## Run locally
+
+```bash
+npm install
+npm run dev
+```
+
+Open `https://localhost:5173` — HTTPS required for camera access.
+
+## Controls
+
+| Key | Action |
+|-----|--------|
+| `1`–`6` | Switch color palette |
+| `M` | Enable microphone beat detection |
+| `N` | Enable system audio beat detection |
+| `B` | Toggle auto palette switching on beat |
+| `R` | Reset particles + fluid |
+| `P` | Toggle particle rendering |
+| `D` | Toggle dye rendering |
+| `S` | Clear dye |
+
+URL params: `?q=ultralow|low|medium|high|ultrahigh` — set quality preset.
+
+## Credits
+
+Original GPU fluid simulation by [George Corney (@haxiomic)](https://github.com/haxiomic/GPU-Fluid-Experiments) — Navier-Stokes solver, double-buffered render-to-texture pipeline, particle system, quality presets. This fork rewrites the rendering engine in TypeScript/WebGL2 and adds hand tracking, body segmentation, and audio reactivity on top of those ideas.

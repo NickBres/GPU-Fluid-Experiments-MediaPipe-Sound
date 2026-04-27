@@ -12,3 +12,8 @@ bin/
 CONTACTS.md
 
 ios.project/
+
+node_modules/
+dist/
+public/hand_landmarker.task
+public/selfie_segmenter.tflite
